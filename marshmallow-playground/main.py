@@ -25,6 +25,7 @@ class UserSchema(Schema):
 
 
 def main():
+    print('\n'*5)
     print(f'Marshmallow playground')
     user1 = User("Gil","gildev@gmail.com")
     print('Outout __str__ & __repr__')
@@ -37,10 +38,29 @@ def main():
     )
 
 
+
+    # Serializing Objects (“Dumping”)
+    print('\nSerializing Objects : \n')
     user = User(name="Monty", email="monty@python.org") # Create a simple User object 
     schema = UserSchema()
-    result = schema.dump(user)
-    pprint(result)
+    # Serialize objects by passing them to your schema’s dump method, which returns the formatted result.
+    result1 = schema.dump(user)
+    pprint(result1)
+
+    print('\nFiltering Output : \n')
+    summary_schema = UserSchema(only=("name", "email"))
+    result2 = summary_schema.dump(user)
+    pprint(result2)
+
+    print('\n Exclude Output : \n')
+    summary_schema = UserSchema(exclude=("name", "email"))
+    result3 = summary_schema.dump(user)
+    pprint(result3)
+    
+
+
+
+    print('\n'*5)
 
 
 
