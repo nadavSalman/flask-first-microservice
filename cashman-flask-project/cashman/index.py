@@ -13,6 +13,12 @@ transactions = [
     Expense('Rock Concert', 100)
 ]
 
+api_version = "v1.1"
+
+@app.route('/liveness')
+def get_api_version():
+    return jsonify({'api version': api_version}), 200
+    
 
 @app.route('/incomes')
 def get_incomes():
@@ -20,7 +26,7 @@ def get_incomes():
     incomes = schema.dump(
         filter(lambda t: t.type == TransactionType.INCOME, transactions)
     )
-    return jsonify(incomes)
+    return jsonify(incomes), 200
 
 
 @app.route('/incomes', methods=['POST'])
@@ -36,7 +42,7 @@ def get_expenses():
     expenses = schema.dump(
         filter(lambda t: t.type == TransactionType.EXPENSE, transactions)
     )
-    return jsonify(expenses)
+    return jsonify(expenses) , 200
 
 
 @app.route('/expenses', methods=['POST'])
