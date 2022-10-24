@@ -18,7 +18,10 @@ api_version = "v1.1"
 @app.route('/liveness')
 def get_api_version():
     return jsonify({'api version': api_version}), 200
-    
+
+@app.route('/')
+def get_api_root():
+    return jsonify({'Python Flask Micro Service': 'cashman'}), 200
 
 @app.route('/incomes')
 def get_incomes():
