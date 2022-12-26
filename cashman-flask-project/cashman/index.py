@@ -3,6 +3,8 @@ from flask import Flask, jsonify, request ,url_for
 from cashman.model.expense import Expense, ExpenseSchema
 from cashman.model.income import Income, IncomeSchema
 from cashman.model.transaction_type import TransactionType
+import os
+
 
 # Import bluesprints
 from cashman.blueprints.basic_operation_blueprint import create_basic_opeartion_blueprint
@@ -21,7 +23,7 @@ api_version = "v1.1"
 
 import logging
 
-logging.basicConfig(filename='/Users/nsalman/dev-me/flask-first-microservice/app-logs/record.log', level=logging.ERROR)
+logging.basicConfig(filename=os.getcwd() + '/app-logs/record.log', level=logging.ERROR)
 
 app = Flask(__name__)
 
