@@ -13,6 +13,6 @@ class Income(Transaction):
 
 
 class IncomeSchema(TransactionSchema):
-    @post_load
+    @post_load # The load method return a Income instance.
     def make_income(self, data, **kwargs):
-        return Income(**data)
+        return Income(**data) 

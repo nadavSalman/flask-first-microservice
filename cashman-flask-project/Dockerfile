@@ -2,7 +2,7 @@
 FROM python:3.10-alpine
 
 # Installing packages
-RUN apk update
+# RUN apk update
 RUN pip install --no-cache-dir pipenv
 
 # Defining working directory and adding source code
